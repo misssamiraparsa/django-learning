@@ -16,13 +16,10 @@ days = {
 
 def days_list(request):
     days_list = list(days.keys())
-    list_item = " "
-    for day in days_list:
-        url_path = reverse('days-of-week', args=[day])
-        list_item += f'<li> <a href = "{url_path}">{day} </a> </li>\n'
-    contant = f'<ul>\n {list_item}\n</ul>'
-
-    return HttpResponse(contant)
+    context = {
+        'days': days_list
+    }
+    return render(request,"challenges/index.html", context)
 
 def daynamic_day_by_num(request, day):
     days_name = list(days.keys())
@@ -38,11 +35,10 @@ def daynamic_days(request, day):
     day_data = days.get(day)
     if day_data is not None:
         context = {
-            "data": day_data
+            "data": day_data,
+            "day": day
         }
         return render(request,'challenges/challenge.html', context)
-        #response_data = render_to_string('challenges/challenge.html')
-        #return HttpResponse(response_data)
     return HttpResponseNotFound('day does not exists')
 
 

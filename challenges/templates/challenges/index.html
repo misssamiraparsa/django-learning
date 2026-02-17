@@ -1,17 +1,21 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html leng = "en">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width , initial-scale =1.0">
-    <title>days info</title>
+    <title> days </title>
 </head>
 
 <body>
-   <h1>{{ day | title}}</h1>
-   <h2>
-       {{ data }}
-   </h2>
+     <ul>
+        {% for day in days %}
+        <li>
+        <a href=""> {{ day |title  }}</a>
+        </li>
+        {% endfor %}
+
+     </ul>
 </body>
 </html>
