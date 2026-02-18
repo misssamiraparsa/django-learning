@@ -1,15 +1,11 @@
-<!DOCTYPE html>
-<html leng = "en">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width , initial-scale =1.0">
-    <title>days info</title>
-</head>
+    {% block page_title %}
+    days info
+    {% endblock %}
 
-<body>
-   <h1>{{ day | title}}</h1>
+    {% block content %}
+        <h1>{{ day | title}}</h1>
    {% if data is not None %}
        <h2>
        {{ data }}
@@ -17,7 +13,5 @@
    {% else %}
        <p>there is no data</p>
    {% endif %}
+    {% endblock %}
 
-
-</body>
-</html>
