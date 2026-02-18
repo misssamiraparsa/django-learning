@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse,HttpResponseNotFound,HttpResponseRedirect
+from django.http import HttpResponse,Http404,HttpResponseNotFound,HttpResponseRedirect
 from django.urls import reverse
 from django.template.loader import render_to_string
 
@@ -33,6 +33,8 @@ def daynamic_day_by_num(request, day):
 
 def daynamic_days(request, day):
     day_data = days.get(day)
+    if day_data is None:
+        raise Http404()
     context = {
             "data": day_data,
             "day": day
