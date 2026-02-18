@@ -11,7 +11,7 @@ days = {
     'tuesday': 'this is tuesday',
     'wednesday': 'this is wednesday',
     'thursday': 'this is thursday',
-    'friday': 'this is friday',
+    'friday':None,
 }
 
 def days_list(request):
@@ -33,13 +33,11 @@ def daynamic_day_by_num(request, day):
 
 def daynamic_days(request, day):
     day_data = days.get(day)
-    if day_data is not None:
-        context = {
+    context = {
             "data": day_data,
             "day": day
         }
-        return render(request,'challenges/challenge.html', context)
-    return HttpResponseNotFound('day does not exists')
+    return render(request,'challenges/challenge.html', context)
 
 
 
