@@ -9,6 +9,5 @@ def index(request):
 def posts(request):
     return render(request, 'blog/all-posts.html')
 
-def single_post(request):
-    pass
-
+def single_post(request,slug):
+    return render(request, 'blog/post-detail.html')
