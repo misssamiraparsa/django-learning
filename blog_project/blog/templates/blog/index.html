@@ -11,12 +11,6 @@
 {% endblock %}
 
 {% block content %}
-    <header id="main-navigation">
-        <h1><a href="">Toplearn Blog</a></h1>
-        <nav>
-            <a href="">All Posts</a>
-        </nav>
-    </header>
 
     <section id="welcome">
         <header>
@@ -29,10 +23,9 @@
     <section id="latest-posts">
         <h2>Latest Posts</h2>
         <ul>
-            {% include 'blog/includes/post.html' %}
-            {% include 'blog/includes/post.html' %}
-            {% include 'blog/includes/post.html' %}
-            {% include 'blog/includes/post.html' %}
+            {% for post in latest_posts %}
+                {% include 'blog/includes/post.html' %}
+            {% endfor %}
         </ul>
     </section>
 
