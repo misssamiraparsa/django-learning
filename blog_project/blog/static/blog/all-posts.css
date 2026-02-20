@@ -24,6 +24,7 @@ body {
 }
 
 .post a {
+    width: 100%;
     height: 22rem;
     transform-origin: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, .4);
