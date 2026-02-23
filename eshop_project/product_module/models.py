@@ -6,6 +6,17 @@ from django.utils.text import slugify
 
 # Create your models here.
 
+class ProductTag(models.Model):
+    tag = models.CharField(max_length=100, verbose_name='tag title')
+
+    class Meta:
+        verbose_name = 'productTag'
+        verbose_name_plural = 'productTags'
+
+    def __str__(self):
+      return self.tag
+
+
 class ProductCategory(models.Model):
     title = models.CharField(max_length=200, verbose_name='عنوان')
     url_title = models.CharField(max_length=200, verbose_name='عنوان در url')
@@ -13,10 +24,17 @@ class ProductCategory(models.Model):
     def __str__(self):
         return f'({self.title} - {self.url_title})'
 
+    class Meta:
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
 
 class ProductInformation(models.Model):
     color = models.CharField(max_length=100, verbose_name='color')
     size = models.CharField(max_length=100, verbose_name='size')
+
+    class Meta:
+        verbose_name = 'productInformation'
+        verbose_name_plural = 'productInformations'
 
     def __str__(self):
         return f'({self.color} - {self.size})'
@@ -24,6 +42,14 @@ class ProductInformation(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
+
+    product_tags = models.ManyToManyField(
+        ProductTag,
+        null=True,
+        blank=True,
+        verbose_name='product tags',
+        related_name='product_tags'
+    )
     product_information = models.OneToOneField(
         ProductInformation,
         on_delete=models.CASCADE,
@@ -50,6 +76,10 @@ class Product(models.Model):
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+
+    class Meta:
+        verbose_name = 'product'
+        verbose_name_plural = 'products'
 
     def __str__(self):
         return f"{self.title}({self.price})"
