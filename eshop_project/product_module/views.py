@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Product
+from .models import Product,ProductCategory
 from django.db.models import Avg
 
 
 # Create your views here.
+
 
 def product_list(request):
     products = Product.objects.all().order_by('-price')
