@@ -9,12 +9,10 @@ from django.db.models import Avg
 def product_list(request):
     products = Product.objects.all().order_by('-price')
     number_of_products = products.count()
-    avg_rating = products.aggregate(Avg("rating"))
 
     return render(request, 'product_module/product_list.html', {
         'products': products,
         'total_number_of_products':number_of_products,
-        'average_ratings':avg_rating
 
     })
 
