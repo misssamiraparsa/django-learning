@@ -18,6 +18,16 @@ class ProductCategory(models.Model):
         verbose_name = 'category'
         verbose_name_plural = 'categories'
 
+class ProductBrand(models.Model):
+    title = models.CharField(max_length=200, verbose_name='اسم برند',db_index=True)
+    is_active = models.BooleanField(verbose_name='فعال یا غیرفعال')
+
+    class Meta:
+        verbose_name = 'brand'
+        verbose_name_plural = 'brands'
+
+    def __str__(self):
+        return self.title
 
 class Product(models.Model):
     title = models.CharField(max_length=100)
@@ -26,6 +36,7 @@ class Product(models.Model):
         verbose_name='products',
         related_name='product_categories'
     )
+    brand = models.ForeignKey(ProductBrand, on_delete=models.CASCADE, verbose_name='برند', null=True, blank=True)
     price = models.IntegerField(verbose_name='price')
     short_description = models.CharField(max_length=300, null=True, verbose_name='short description')
     description = models.TextField(verbose_name='main description')
@@ -58,4 +69,3 @@ class ProductTag(models.Model):
 
     def __str__(self):
         return self.caption
-
