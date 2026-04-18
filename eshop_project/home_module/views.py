@@ -1,6 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+
 
 # Create your views here.
+from django.urls import reverse
+
+
 def index_page(request):
     return render(request, 'home_module/index_page.html')
 
@@ -8,7 +12,10 @@ def contact_page(request):
     return render(request, 'home_module/contact_page.html')
 
 def site_header_component(request):
-    return render(request,'shared/site_header_component.html',{})
+    context = {
+        'link': 'آموزش جنگو'
+    }
+    return render(request, 'shared/site_header_component.html', context)
 
 def site_footer_component(request):
     return render(request,'shared/site_footer_component.html',{})
