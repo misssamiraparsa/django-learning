@@ -18,7 +18,7 @@ class ContactUsForm(forms.Form):
                              })
                              )
     subject = forms.CharField(label='موضوع', required=False,
-                              widget=forms.EmailInput(attrs={
+                              widget=forms.TextInput(attrs={
                                   'class': 'form-control',
                                   'placeholder': 'موضوع'
                               })
@@ -28,5 +28,5 @@ class ContactUsForm(forms.Form):
                                'class': 'form-control',
                                'placeholder': 'متن پیام',
                                'rows': '5',
-                               'id': 'massage'
+                               'id': 'massage',
                            }))

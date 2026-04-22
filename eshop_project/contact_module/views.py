@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import ContactUsForm
-# Create your views here.
-from django.urls import reverse
+from .models import ContactUs
 
 
 def contact_us_page(request):
@@ -9,6 +8,14 @@ def contact_us_page(request):
         contact_form = ContactUsForm(request.POST)
         if contact_form.is_valid():
             print(contact_form.cleaned_data)
+            contact = ContactUs(
+                title=contact_form.cleaned_data.get('subject'),
+                full_name=contact_form.cleaned_data.get('full_name'),
+                email=contact_form.cleaned_data.get('email'),
+                message=contact_form.cleaned_data.get('text')
+            )
+
+            contact.save()
             return redirect('home_page')
     else:
         contact_form = ContactUsForm()
