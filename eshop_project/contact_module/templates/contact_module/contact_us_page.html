@@ -13,8 +13,17 @@
                               method="post">
                             {% csrf_token %}
 
+                            {% for field in form %}
+                                <div class="col-md-12 form-group">
+                                {{ field.label_tag }}
+                                {{ field }}
+                                {{ field.errors }}
+                            </div>
+                            {% endfor %}
 
-                             <div class="col-md-6 form-group">
+
+
+                             {% comment %}<div class="col-md-6 form-group">
                                  {{ contact_form.email.label_tag }}
                                 {{ contact_form.email }}
                                  {{ contact_form.email.errors }}
@@ -33,7 +42,7 @@
                                 {{ contact_form.message.label_tag }}
                                 {{ contact_form.message }}
                                 {{ contact_form.message.errors }}
-                            </div>
+                            </div>{% enccomment %}
 
                             {% comment %}{{  contact_form }}{% endcomment %}
                             {% comment %}<div class="form-group col-md-6">
