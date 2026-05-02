@@ -60,3 +60,6 @@ class ContactUsModelForm(forms.ModelForm):
 
         # fields = '__all__'
         # exclude = ['response']
+
+class ProfileForm(forms.Form):
+    user_image = forms.FileField()
