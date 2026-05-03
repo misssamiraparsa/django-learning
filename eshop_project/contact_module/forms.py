@@ -54,12 +54,12 @@ class ContactUsModelForm(forms.ModelForm):
 
         error_messages = {
             'full_name': {
-                'required' : 'نام و نام خانوادگی اجباری است'
+                'required': 'نام و نام خانوادگی اجباری است'
             }
         }
 
         # fields = '__all__'
         # exclude = ['response']
 
-class ProfileForm(forms.Form):
-    user_image = forms.FileField()
+# class ProfileForm(forms.Form):
+#   user_image = forms.ImageField()
