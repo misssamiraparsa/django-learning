@@ -34,8 +34,8 @@ class Product(models.Model):
     category = models.ManyToManyField(
         ProductCategory,
         verbose_name='products',
-        related_name='product_categories'
-    )
+        related_name='product_categories')
+    image = models.ImageField(upload_to='images/products', null=True, blank=True, verbose_name='تصوبر محصول')
     brand = models.ForeignKey(ProductBrand, on_delete=models.CASCADE, verbose_name='برند', null=True, blank=True)
     price = models.IntegerField(verbose_name='price')
     short_description = models.CharField(max_length=300, null=True, verbose_name='short description')
