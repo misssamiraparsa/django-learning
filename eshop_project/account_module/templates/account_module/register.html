@@ -14,7 +14,6 @@
 						<form method="post" action="{% url 'register_page' %}" >
                             {% csrf_token %}
                             {{ register_form }}
-                            {{ register_form.errors }}
 							{% comment %} <input type="text" placeholder="نام کاربـری"/>
 							<input type="email" placeholder="آدرس ایمیـل"/>
 							<input type="password" placeholder="رمـز عبـور"/>{% endcomment %}
