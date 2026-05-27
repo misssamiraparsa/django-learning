@@ -35,12 +35,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #internal apps
+    # internal apps
     'product_module',
     'home_module',
     'contact_module',
     'account_module',
-    #external apps
+    # external apps
     'django_render_partial',
 ]
 
@@ -130,4 +130,10 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#SESSION_COOKIE_AGE = 120
+# SESSION_COOKIE_AGE = 120
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = ''  # email address
+EMAIL_HOST_PASSWORD = ''  # email password
+EMAIL_PORT = 587
