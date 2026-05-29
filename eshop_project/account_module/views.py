@@ -88,7 +88,7 @@ class LoginView(View):
                 login_form.add_error('email', 'مشخصات وارد شده یافت نشد')
 
 
-class ForgetPassword(View):
+class ForgetPasswordView(View):
     def get(self, request: HttpRequest):
         forget_pass_form = ForgotPasswordForm()
         context = {'forget_pass_form': forget_pass_form}
@@ -100,14 +100,14 @@ class ForgetPassword(View):
             user_email = forget_pass_form.cleaned_data.get('email')
             user: User = User.objects.filter(email__iexact=user_email)
             if user is not None:
-                # send reset pass email to user
-                pass
+                send_email(' بازیابی کلمه عبور ', user.email, {'user': user}, 'emails/forgot_password.html')
+                return redirect(reverse('home_page'))
 
         context = {'forget_pass_form': forget_pass_form}
         return render(request, 'account_module/forgot_password.html', context)
 
 
-class ResetPassword(View):
+class ResetPasswordView(View):
     def get(self, request: HttpRequest, active_code):
         user:User = User.objects.filter(email_active_code__iexact=active_code)
         if user is None:
@@ -138,8 +138,12 @@ class ResetPassword(View):
         return render(request, 'account_module/reset_password.html', context)
 
 
+class LogoutView(View):
+    def get(self,request):
+        logout(request)
+        return redirect(reverse('login_page'))
 
-
-
+    def post(self,request:HttpRequest):
+        pass
 
 
