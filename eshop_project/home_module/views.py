@@ -1,14 +1,6 @@
 from django.shortcuts import render, redirect
-
-# Create your views here.
-from django.urls import reverse
-from django.views import View
 from django.views.generic.base import TemplateView
 
-
-# class HomeView(View):
-#   def get(self, request):
-#      return render(request, 'home_module/index_page.html')
 
 class HomeView(TemplateView):
     template_name = 'home_module/index_page.html'
@@ -20,7 +12,7 @@ class HomeView(TemplateView):
 
 def site_header_component(request):
     context = {
-        'link': 'آموزش جنگو'
+
     }
     return render(request, 'shared/site_header_component.html', context)
 

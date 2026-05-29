@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     # internal apps
     'product_module',
     'home_module',
+    'site_module',
     'contact_module',
     'account_module',
     # external apps
