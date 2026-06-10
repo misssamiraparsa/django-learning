@@ -39,10 +39,14 @@ INSTALLED_APPS = [
     'product_module',
     'home_module',
     'site_module',
+    'article_module',
     'contact_module',
     'account_module',
+    'polls',
     # external apps
     'django_render_partial',
+    'sorl.thumbnail',
+    'jalali_date'
 ]
 
 MIDDLEWARE = [
@@ -138,3 +142,23 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = ''  # email address
 EMAIL_HOST_PASSWORD = ''  # email password
 EMAIL_PORT = 587
+
+# default settings (optional)
+JALALI_DATE_DEFAULTS = {
+   # if change it to true then all dates of the list_display will convert to the Jalali.
+   'LIST_DISPLAY_AUTO_CONVERT': False,
+   'Strftime': {
+        'date': '%y/%m/%d',
+        'datetime': '%H:%M:%S _ %y/%m/%d',
+    },
+    'Static': {
+        'js': [
+            'admin/js/django_jalali.min.js',
+        ],
+        'css': {
+            'all': [
+              'admin/css/django_jalali.min.css',
+            ]
+        }
+    },
+}
