@@ -86,6 +86,11 @@ class LoginView(View):
                         login_form.add_error('email', ' نام کاربری یا کلمه عبور اشتباه است')
             else:
                 login_form.add_error('email', 'مشخصات وارد شده یافت نشد')
+        context = {
+            'login_form': login_form
+        }
+
+        return render(request, 'account_module/login.html', context)
 
 
 class ForgetPasswordView(View):
